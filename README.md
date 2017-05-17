@@ -2,14 +2,17 @@
 
 Deep Feature Interpolation (DFI) edits the content of an image by interpolating the feature representations of a deep convolutional neural network. DFI is described in [https://arxiv.org/abs/1611.05507](https://arxiv.org/abs/1611.05507) and will appear at [CVPR 2017](http://cvpr2017.thecvf.com/).
 
-```latex
-@inproceedings{upchurch2017deep,
+Paul Upchurch<sup>1</sup>, Jacob Gardner<sup>1</sup>, Geoff Pleiss, Robert Pless, Noah Snavely, Kavita Bala, Kilian Weinberger. Deep Feature Interpolation for Image Content Changes. In Computer Vision and Pattern Recognition (CVPR), 2017 
+<sup>1</sup>Authors contributed equally.
+<details>
+  <summary>bibtex</summary>
+  <pre>@inproceedings{upchurch2017deep,
   title={{D}eep {F}eature {I}nterpolation for Image Content Changes},
   author={Upchurch, Paul and Gardner, Jacob and Pleiss, Geoff and Pless, Robert and Snavely, Noah and Bala, Kavita and Weinberger, Kilian},
   booktitle={Computer Vision and Pattern Recognition (CVPR)},
   year={2017}
-}
-```
+}</pre> 
+</details>
 
 # 2 Demonstrations
 
@@ -17,13 +20,13 @@ Deep Feature Interpolation (DFI) edits the content of an image by interpolating 
 
 ![demo1](documentation/images/demo1_example.png)
 
-This script produces six kinds of transformations on LFW faces at a resolution of 200x200. Images will be automatically downloaded.
+This script produces six kinds of transformations on LFW faces (older, mouth open, eyes open, smiling, moustache, eyeglasses).
 
 ## 2.2 Demo2
 
 ![demo2](documentation/images/demo2_senior.jpg) ![demo2](documentation/images/demo2_man.jpg) ![demo2](documentation/images/demo2_kid.jpg)
 
-This script ages or adds facial hair to a front-facing portrait at resolutions up to 1000x1000. Follow the directions in [datasets/facemodel/sources.txt](../datasets/facemodel/sources.txt) to prepare the image database. 
+This script ages or adds facial hair to a front-facing portrait at resolutions up to 1000x1000. Follow the directions in [datasets/facemodel/sources.txt](datasets/facemodel/sources.txt) to prepare the image database. 
 
 ## 2.3 Demo3
 
@@ -43,30 +46,4 @@ result. We set Caffe+SciPy to be default for the LFW and UT-Zappos50K
 demonstrations and Torch to be the default for the high-res face
 demonstration.
 
-# 4 Contents
-
-demo1.py: Transforms LFW faces.
-
-demo2.py: Transforms high-resolution faces.
-
-demo3.py: Inpaints UT-Zappos50K shoes.
-
-images/lfw_aegan: Cropped and aligned LFW images (automatically downloaded
-by demo1.py)
-
-datasets/facemodel/sources.txt: Instructions for preparing the
-high-resolution database for demo2.py.
-
-datasets/utzap/vggpool5.200x200_A.npz: Precomputed nearest neighbors
-for UT-Zappos50K (automatically downloaded by demo3.py)
-
-datasets/test/sources.txt: URLs for the high-res images in the paper.
-
-datasets/test/masks: Masks for the high-res images in the paper.
-
-models/facemodel: Face attribute predictor.
-
-models/VGG_CNN_19: Caffe model for normalized VGG-19.
-
-~/.torch/models/vgg19g-4aff041b.pth: Torch model for normalized VGG-19 (automatically downloaded).
 
