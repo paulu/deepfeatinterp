@@ -1,0 +1,6 @@
+gen/
+images/
+results/
+libnccl.so
+model.t7
+checkpoints
