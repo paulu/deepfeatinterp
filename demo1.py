@@ -49,7 +49,7 @@ def make_manifolds(a,s=[],t=[],N=10,X=None,visualize=False):
 if __name__=='__main__':
   # configure by command-line arguments
   parser=argparse.ArgumentParser(description='Generate LFW face transformations.',formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-  parser.add_argument('--backend',type=str,default='torch',choices=['torch','caffe+scipy'],help='reconstruction implementation')
+  parser.add_argument('--backend',type=str,default='caffe+scipy',choices=['torch','caffe+scipy'],help='reconstruction implementation')
   parser.add_argument('--device_id',type=int,default=0,help='zero-indexed CUDA device')
   parser.add_argument('--K',type=int,default=100,help='number of nearest neighbors')
   parser.add_argument('--scaling',type=str,default='beta',choices=['none','beta'],help='type of step scaling')

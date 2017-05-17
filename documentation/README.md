@@ -15,13 +15,19 @@ This repo contains code to reproduce the results presented in [https://arxiv.org
 
 ## 2.1 Demo1
 
+![demo1](images/demo1_example.svg)
+
 This script produces six kinds of transformations on LFW faces at a resolution of 200x200. Images will be automatically downloaded.
 
 ## 2.2 Demo2
 
+![demo2](images/demo2_example.svg)
+
 This script ages or adds facial hair to a front-facing portrait at resolutions up to 1000x1000. Follow the directions in [datasets/facemodel/sources.txt](../datasets/facemodel/sources.txt) to prepare the image database. 
 
 ## 2.3 Demo3
+
+![demo3](images/demo3_example.png)
 
 This script fills in missing portions of shoe images. You will need to acquire the [UT Zappos50K](http://vision.cs.utexas.edu/projects/finegrained/utzap50k/) images.
 

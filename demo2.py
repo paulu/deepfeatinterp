@@ -44,7 +44,7 @@ if __name__=='__main__':
   parser=argparse.ArgumentParser(description='Generate high resolution face transformations.',formatter_class=argparse.ArgumentDefaultsHelpFormatter)
   parser.add_argument('method',type=str,choices=['older','younger','facehair'],help='desired transformation')
   parser.add_argument('input',type=str,nargs='+',help='input color image')
-  parser.add_argument('--backend',type=str,default='torch',choices=['torch','caffe+scipy'],help='reconstruction implementation')
+  parser.add_argument('--backend',type=str,default='caffe+scipy',choices=['torch','caffe+scipy'],help='reconstruction implementation')
   parser.add_argument('--device_id',type=int,default=0,help='zero-indexed CUDA device')
   parser.add_argument('--K',type=int,default=100,help='number of nearest neighbors')
   parser.add_argument('--scaling',type=str,default='none',choices=['none','beta'],help='type of step scaling')
