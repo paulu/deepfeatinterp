@@ -1,0 +1,20 @@
+1. Introduction
+
+In this document we describe how to prepare the UT-Zappos50K images for
+use with demo3.py.
+
+Download the images from
+http://vision.cs.utexas.edu/projects/finegrained/utzap50k/.
+
+Place them so that "images/utzap/Shoes/Boat Shoes/ALDO/8045627.325.jpg"
+is a valid path.
+
+If you use these images in a publication then cite
+
+@inproceedings{yu2014fine,
+  title={Fine-grained visual comparisons with local learning},
+  author={Yu, Aron and Grauman, Kristen},
+  booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+  year={2014}
+}
+

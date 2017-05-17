@@ -1,0 +1,31 @@
+Images are copyright their owners. The Flickr website may have a public domain license.
+
+Masks for a cropped region around the face are given in the masks subdirectory.
+
+12 men
+
+https://www.flickr.com/photos/139820784@N07/25659187464
+https://www.flickr.com/photos/139820784@N07/25660225104
+https://www.flickr.com/photos/139820784@N07/25661573293
+https://www.flickr.com/photos/139820784@N07/26171557252
+https://www.flickr.com/photos/139820784@N07/26172314132
+https://www.flickr.com/photos/56119537@N08/27257198021
+https://www.flickr.com/photos/ctcwired/24806065080
+https://www.flickr.com/photos/owen_lucas_photography/15207688492
+https://www.flickr.com/photos/owen_lucas_photography/7180505709
+https://www.flickr.com/photos/owen_lucas_photography/7454442518
+https://www.flickr.com/photos/owen_lucas_photography/7454448514
+https://www.flickr.com/photos/owen_lucas_photography/7454467582
+
+
+8 women
+
+https://www.flickr.com/photos/132031288@N02/26294628541
+https://www.flickr.com/photos/139820784@N07/25658124284
+https://www.flickr.com/photos/14018160@N05/27392678012
+https://www.flickr.com/photos/144006675@N05/27576609106
+https://www.flickr.com/photos/144006675@N05/27671861600
+https://www.flickr.com/photos/31121105@N04/25622612293
+https://www.flickr.com/photos/famousartist101/26879114720
+https://www.flickr.com/photos/owen_lucas_photography/15021511247
+
