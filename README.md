@@ -20,7 +20,7 @@ Paul Upchurch<sup>1</sup>, Jacob Gardner<sup>1</sup>, Geoff Pleiss, Robert Pless
 
 ![demo1](documentation/images/demo1_example.png)
 
-This script produces six kinds of transformations on LFW faces (older, mouth open, eyes open, smiling, moustache, eyeglasses).
+This script produces six kinds of transformations (older, mouth open, eyes open, smiling, moustache, eyeglasses) on LFW faces.
 
 ## 2.2 Demo2
 
@@ -45,5 +45,3 @@ GPU. Torch is faster than Caffe+SciPy but it produces a lower-quality
 result. We set Caffe+SciPy to be default for the LFW and UT-Zappos50K
 demonstrations and Torch to be the default for the high-res face
 demonstration.
-
-
