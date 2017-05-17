@@ -15,13 +15,13 @@ This repo contains code to reproduce the results presented in [https://arxiv.org
 
 ## 2.1 Demo1
 
-![demo1](images/demo1_example.svg)
+![demo1](images/demo1_example.png)
 
 This script produces six kinds of transformations on LFW faces at a resolution of 200x200. Images will be automatically downloaded.
 
 ## 2.2 Demo2
 
-![demo2](images/demo2_example.svg)
+![demo2](images/demo2_senior.jpg) ![demo2](images/demo2_man.jpg) ![demo2](images/demo2_kid.jpg)
 
 This script ages or adds facial hair to a front-facing portrait at resolutions up to 1000x1000. Follow the directions in [datasets/facemodel/sources.txt](../datasets/facemodel/sources.txt) to prepare the image database. 
 
