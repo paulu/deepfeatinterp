@@ -54,8 +54,10 @@ if __name__=='__main__':
 
   # download precomputed features (if needed)
   if not os.path.exists('images/utzap/Shoes/Boat Shoes/ALDO/8045627.325.jpg'):
-    print('Acquire the UT-Zappos50K dataset and place the files so that images/utzap/Shoes/Boat Shoes/ALDO/8045627.325.jpg is a valid path.')
-    sys.exit(1)
+    url='http://vision.cs.utexas.edu/projects/finegrained/utzap50k/ut-zap50k-images.zip'
+    subprocess.check_call(['wget',url,'-O','ut-zap50k-images.zip'])
+    subprocess.check_call(['unzip','ut-zap50k-images.zip','-d','images/utzap'])
+    subprocess.check_call(['rm','ut-zap50k-images.zip'])
   if not os.path.exists('datasets/utzap/vggpool5.200x200.npz'):
     url='https://www.dropbox.com/s/mms9jcznmavsxcr/utzap_knn.npz?dl=1'
     subprocess.check_call(['wget',url,'-O','datasets/utzap/vggpool5.200x200.npz'])
