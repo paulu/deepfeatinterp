@@ -64,7 +64,7 @@ if __name__=='__main__':
   data=numpy.load('datasets/utzap/utzap_test_set.npz')
   X=list(data['X']) # test groups
   T=list(data['T']) # non-test groups
-  data=numpy.load('datasets/utzap/vggpool5.200x200_A.npz')
+  data=numpy.load('datasets/utzap/vggpool5.200x200.npz')
   KNN_A=data['A'] # precomputed nearest neighbors for masked X \cup T
   filelist=list(data['filelist'])
   assert filelist==[x.replace('utzap','utzap_inpaint').replace('.jpg','.png') for x in X+T]
