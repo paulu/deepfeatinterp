@@ -40,7 +40,7 @@ This script ages or adds facial hair to a front-facing portrait at resolutions u
 ### Preparing an Images Database
 This demo requires a database of high resolution images, which is used to select source and target
 images for the transformation. Follow the instructions
-[datasets/facemodel/sources.txt](datasets/facemodel/sources.txt) to collect the database we
+[datasets/facemodel/README.md](datasets/facemodel/README.md) to collect the database we
 use in the paper.
 
 ## 2.3 Demo3
