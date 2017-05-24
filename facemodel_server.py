@@ -15,6 +15,9 @@ This is old code used by dataset_rebuild. The newer execnet code
 '''
 
 def facemodel_server_start():
+  if not os.path.exists('models/facemodel/model.t7'):
+    url='https://www.dropbox.com/s/18s63zomyfacjfs/facemodel.t7?dl=1'
+    subprocess.check_call(['wget',url,'-O','models/facemodel/model.t7'])
   os.chdir('models/facemodel')
   try:
     p=subprocess.Popen(['python','-u','server.py'],stdin=subprocess.PIPE,stdout=subprocess.PIPE,close_fds=True)
