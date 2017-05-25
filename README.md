@@ -43,6 +43,18 @@ images for the transformation. Follow the instructions
 [datasets/facemodel/README.md](datasets/facemodel/README.md) to collect the database we
 use in the paper.
 
+```python
+python demo2.py <transform> <image> --delta <values>
+
+# e.g. python demo2.py facehair images/facemodel/lfwgoogle/Aaron_Eckhart/00000004.jpg --delta 0.1,0.3,0.5
+# possible transforms are 'facehair', 'older', or 'younger'
+# 2.1 minutes to reconstruct an 800x1000 image (using 1 Titan-X)
+# Total time (800x1000 image): 7.5 minutes
+```
+
+If there are not enough (>= 400) source/target images in your database that match
+the input photo, the demo will not run.
+
 ## 2.3 Demo3
 
 ![demo3](documentation/images/demo3_example.png)
