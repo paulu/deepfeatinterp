@@ -25,7 +25,7 @@ Paul Upchurch<sup>1</sup>, Jacob Gardner<sup>1</sup>, Geoff Pleiss, Robert Pless
 
 This script produces six kinds of transformations (older, mouth open, eyes open, smiling, moustache, eyeglasses) on LFW faces.
 
-```python
+```bash
   python demo1.py
   # ~1.3 minutes to reconstruct each image (using 1 Titan-X)
   # Total time: 9.0 minutes
@@ -43,7 +43,7 @@ images for the transformation. Follow the instructions
 [datasets/facemodel/README.md](datasets/facemodel/README.md) to collect the database we
 use in the paper.
 
-```python
+```bash
 python demo2.py <transform> <image> --delta <values>
 
 # e.g. python demo2.py facehair images/facemodel/lfwgoogle/Aaron_Eckhart/00000004.jpg --delta 0.1,0.3,0.5
@@ -62,7 +62,7 @@ the input photo, the demo will not run.
 This script fills in missing portions of shoe images.
 
 To reconstruct one of the shoe images:
-```python
+```bash
   python demo3.py
   # 1.3 minutes to reconstruct each image (using 1 Titan-X)
   # Total time: 1.5 minutes
