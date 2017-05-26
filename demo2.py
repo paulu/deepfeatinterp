@@ -53,8 +53,10 @@ if __name__=='__main__':
   parser.add_argument('--delta',type=str,default='3.5',help='comma-separated list of interpolation steps')
   parser.add_argument('--output_format',type=str,default='png',choices=['png','jpg'],help='output image format')
   parser.add_argument('--comment',type=str,default='',help='the comment is appended to the output filename')
+  parser.add_argument('--extradata',action='store_true',default=False,help='extra data is saved')
   config=parser.parse_args()
   postprocess=set(config.postprocess.split(','))
+  postfix_comment='_'+config.comment if config.comment else ''
   print(json.dumps(config.__dict__))
 
   # load models
@@ -83,6 +85,7 @@ if __name__=='__main__':
   # for each test image
   for i in range(len(X)):
     xX=X[i]
+    prefix_path=os.path.splitext(xX)[0]
     template,original=alignface.detect_landmarks(xX,face_d,face_p)
     image_dims=original.shape[:2]
     if min(image_dims)<minimum_resolution:
@@ -128,6 +131,8 @@ if __name__=='__main__':
       WF=(QF-PF)
     max_iter=config.iter
     init=original
+    if config.extradata:
+      numpy.savez('{}_{}{}.npz'.format(prefix_path,config.method,postfix_comment),WF=WF)
 
     # for each interpolation step
     result=[]
@@ -142,7 +147,6 @@ if __name__=='__main__':
       init=Y
     result=numpy.asarray([result])
     original=numpy.asarray([original])
-    prefix_path=os.path.splitext(xX)[0]
     X_mask=prefix_path+'-mask.png'
     if 'mask' in postprocess and os.path.exists(X_mask):
       mask=imageutils.resize(imageutils.read(X_mask),image_dims)
@@ -154,7 +158,7 @@ if __name__=='__main__':
       result*=mask
       result+=original*(1-mask)
     m=imageutils.montage(numpy.concatenate([numpy.expand_dims(original,1),result],axis=1))
-    opath='{}_{}_{}{}.{}'.format(prefix_path,timestamp,config.method,'_'+config.comment if config.comment else '',config.output_format)
+    opath='{}_{}_{}{}.{}'.format(prefix_path,timestamp,config.method,postfix_comment,config.output_format)
     imageutils.write(opath,m)
     opathlist.append(opath)
   print('Outputs are {}'.format(' '.join(opathlist)))
