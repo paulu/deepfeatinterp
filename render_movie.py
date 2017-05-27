@@ -29,7 +29,7 @@ if __name__=='__main__':
   parser.add_argument('--device_id',type=int,default=0,help='zero-indexed CUDA device')
   parser.add_argument('--iter',type=int,default=500,help='number of reconstruction iterations for the first frame')
   parser.add_argument('--postprocess',type=str,default='mask',help='comma-separated list of postprocessing operations')
-  parser.add_argument('--output_format',type=str,default='png',choices=['png','jpg'],help='output image format')
+  parser.add_argument('--output_format',type=str,default='mp4',choices=['mkv','mp4','mov'],help='output movie format')
   parser.add_argument('--comment',type=str,default='',help='the comment is appended to the output filename')
   config=parser.parse_args()
   postprocess=set(config.postprocess.split(','))
@@ -95,7 +95,7 @@ if __name__=='__main__':
     imageutils.write(prefix_path+postfix_comment+'/{:06}.png'.format(i),result)
 
   # generate movie
-  cmd=['ffmpeg','-y','-f','image2','-i',prefix_path+postfix_comment+'/%06d.png','-vcodec','libx264','-crf','19','-g','60','-r','30','-s','{}x{}'.format(original.shape[1],original.shape[0]),prefix_path+postfix_comment+'_movie.mkv']
+  cmd=['ffmpeg','-y','-f','image2','-i',prefix_path+postfix_comment+'/%06d.png','-crf','19','-g','60','-r','30','-s','{}x{}'.format(original.shape[1],original.shape[0]),'-pix_fmt','yuv420p',prefix_path+postfix_comment+'_movie.{}'.format(config.output_format)]
   print(' '.join(pipes.quote(x) for x in cmd))
   subprocess.check_call(cmd)
-  print('Output is {}'.format(prefix_path+postfix_comment+'_movie.mkv'))
+  print('Output is {}'.format(prefix_path+postfix_comment+'_movie.{}'.format(config.output_format)))
