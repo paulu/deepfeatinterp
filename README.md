@@ -17,6 +17,18 @@ Paul Upchurch<sup>1</sup>, Jacob Gardner<sup>1</sup>, Geoff Pleiss, Robert Pless
 }</pre> 
 </details>
 
+## 1.1 Requirements
+
+You will need Linux and at least 15 GB of main memory and a recent GPU with at least 4 GB of memory to transform high-resolution images.
+
+The Caffe and Torch deep learning software should be installed so that "import caffe" and "th" work.
+
+Python packages:
+
+```bash
+  pip install numpy scikit-image Pillow opencv-python scipy dlib lutorpy execnet torch torchvision
+```
+
 # 2 Demonstrations
 
 ## 2.1 Demo1
