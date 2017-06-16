@@ -58,6 +58,10 @@ Our method requires that your database contains at least 400 source/target image
 the gender and facial expression of the input photo. A warning message will be printed if there
 are not enough images.
 
+### Test images
+
+The source of each test image and our test masks are in [datasets/test/](datasets/test/). We find that DFI works well on photographs of natural faces which are: un-occluded, front-facing, and lit by natural or office-environment lighting.
+
 ```bash
 python demo2.py <transform> <image> --delta <values>
 
