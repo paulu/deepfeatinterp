@@ -19,7 +19,7 @@ Paul Upchurch<sup>1</sup>, Jacob Gardner<sup>1</sup>, Geoff Pleiss, Robert Pless
 
 ## 1.1 Requirements
 
-You will need Linux and at least 9 GB of main memory and a recent GPU with at least 6 GB of memory to transform high-resolution images.
+You will need Linux and at least 9 GB of main memory and a recent GPU with at least 3 GB of memory to transform high-resolution images.
 
 The Caffe and Torch deep learning software should be installed so that `import caffe` and `th` work.
 
@@ -94,8 +94,12 @@ We have two backends. Caffe+SciPy uses Caffe to forward/backward VGG
 GPU. Torch is faster than Caffe+SciPy but it produces a lower-quality
 result. We set Caffe+SciPy to be default for the LFW and UT-Zappos50K
 demonstrations and Torch to be the default for the high-res face
-demonstration. The Torch model uses more GPU memory so if you run out
-of memory you can try the Caffe+SciPy backend.
+demonstration.
+
+### Memory
+
+The Torch model needs 6 GB of GPU memory. The Caffe+SciPy backend
+needs 3 GB of GPU memory to transform high-res images.
 
 ## 3.2 Interpolation "amount" (--delta)
 
@@ -107,14 +111,14 @@ multiple transformations (this will be faster than running them individually).
 For most transformations, an ideal `delta` value will be between `0.0` and `1.0`
 with `--scaling beta` (between `0.0` and `5.0` with `--scaling none`).
 
-## Speed (--iter)
+## 3.3 Speed (--iter)
 
 The `iter` parameter controls how many L-BFGS-B optimization steps are used
 for reconstruction. Less steps means less time and lower quality. This
 parameter should not be set lower than 150. With `--iter 150` the Torch backend takes 20
 seconds to reconstruct a 200x200 image and 3 minutes to reconstruct a 725x1000 image.
 
-## 3.3 Other options
+## 3.4 Other options
 
 * `--device_id` - if you want to specify a GPU to use
 * `--K` - number of nearest neighbors used to construct source/target sets
