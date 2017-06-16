@@ -90,21 +90,23 @@ We have two backends. Caffe+SciPy uses Caffe to forward/backward VGG
 GPU. Torch is faster than Caffe+SciPy but it produces a lower-quality
 result. We set Caffe+SciPy to be default for the LFW and UT-Zappos50K
 demonstrations and Torch to be the default for the high-res face
-demonstration.
+demonstration. The Torch model uses more GPU memory so if you run out
+of memory you can try the Caffe+SciPy backend.
 
 ## 3.2 Interpolation "amount" (--delta)
 
-The `delta` parameter controlls how strong a transformation to make. Setting it to 0
+The `delta` parameter controls how strong a transformation to make. Setting it to zero
 results in no transformation at all, and larger numbers result in a stronger
-transformation. You can input multiple values, like `--delta 0,0.1,0.3,0.5` to try
-multiple transformations.
+transformation. You can input multiple values, like `--delta 0.1,0.3,0.5` to try
+multiple transformations (this will be faster than running them individually).
 
-For most transformations, an ideal `delta` value will be between `0` and `1` (unless you use
-the `--scaling none` option).
+For most transformations, an ideal `delta` value will be between `0.0` and `1.0`
+with `--scaling beta` (between `0.0` and `5.0` with `--scaling none`).
 
 ## 3.3 Other options
 
 * `--device_id` - if you want to specify a GPU to use
 * `--K` - number of nearest neighbors used to construct source/target sets
-* `--iter` - number of optimization iterations for reconstruction
+* `--iter` - number of optimization iterations for reconstruction (must be >= 150)
 * `--postprocess color` - matches the color of the final image to match the original image
+* `--postprocess mask` - apply a mask (for input foo.jpg the mask should be named foo-mask.png)
