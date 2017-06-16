@@ -151,7 +151,6 @@ def caffe_mean_F(X,net,input_blob,blob_names,mean,scale):
       net.forward_all(**{input_blob:caffe_in})
     else:
       net.forward_all(**{input_blob:caffe_in})
-    F=numpy.concatenate([net.blobs[k].data.copy().ravel() for k in blob_names])
     if n==0:
       mu={k:net.blobs[k].data.copy() for k in blob_names}
     else:
