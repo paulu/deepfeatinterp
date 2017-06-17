@@ -1,6 +1,6 @@
 # 1 Introduction
 
-Deep Feature Interpolation (DFI) edits the content of an image by interpolating the feature representations of a deep convolutional neural network. DFI is described in [https://arxiv.org/abs/1611.05507](https://arxiv.org/abs/1611.05507) and will appear at [CVPR 2017](http://cvpr2017.thecvf.com/).
+Deep Feature Interpolation (DFI) edits the content of an image by interpolating the feature representations of a deep convolutional neural network. DFI is described in [Deep Feature Interpolation for Image Content Changes](https://arxiv.org/abs/1611.05507) and will appear at [CVPR 2017](http://cvpr2017.thecvf.com/).
 
 Please cite this paper if you use our work:
 
