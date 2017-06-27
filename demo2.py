@@ -54,6 +54,8 @@ if __name__=='__main__':
   parser.add_argument('--output_format',type=str,default='png',choices=['png','jpg'],help='output image format')
   parser.add_argument('--comment',type=str,default='',help='the comment is appended to the output filename')
   parser.add_argument('--extradata',action='store_true',default=False,help='extra data is saved')
+  parser.add_argument('--output',type=str,default='',help='output is written to this pathname')
+  parser.add_argument('--include_original',action='store_true',default=False,help='the first column of the output is the original image')
   config=parser.parse_args()
   postprocess=set(config.postprocess.split(','))
   postfix_comment='_'+config.comment if config.comment else ''
@@ -157,8 +159,14 @@ if __name__=='__main__':
     if 'mask' in postprocess and os.path.exists(X_mask):
       result*=mask
       result+=original*(1-mask)
-    m=imageutils.montage(numpy.concatenate([numpy.expand_dims(original,1),result],axis=1))
-    opath='{}_{}_{}{}.{}'.format(prefix_path,timestamp,config.method,postfix_comment,config.output_format)
+    if config.include_original:
+      m=imageutils.montage(numpy.concatenate([numpy.expand_dims(original,1),result],axis=1))
+    else:
+      m=imageutils.montage(result)
+    if config.output:
+      opath=config.output
+    else:
+      opath='{}_{}_{}{}.{}'.format(prefix_path,timestamp,config.method,postfix_comment,config.output_format)
     imageutils.write(opath,m)
     opathlist.append(opath)
   print('Outputs are {}'.format(' '.join(opathlist)))
