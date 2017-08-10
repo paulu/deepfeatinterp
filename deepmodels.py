@@ -179,7 +179,7 @@ def caffe_hypercolumn(F,blob_names):
 class vgg19g(object):
   '''
   >>> model=vgg19g(device_id=0)
-  >>> original=skimage.io.imread('results/008994small.png')/255.0
+  >>> original=skimage.io.imread('tests/008994small.png')/255.0
   >>> ref=numpy.load('tests/008994small_reference_F.npy')
   >>> F=model.mean_F([original])
   >>> F.shape
@@ -197,7 +197,7 @@ class vgg19g(object):
     self.deploy='models/VGG_CNN_19/VGG_ILSVRC_19_layers_deploy_fullconv.prototxt'
     self.weights='models/VGG_CNN_19/vgg_normalised.caffemodel'
     self.caffe=import_caffe(self.device_id)
-    self.net=self.caffe.Net(self.deploy,self.caffe.TEST,weights=self.weights)
+    self.net=self.caffe.Net(self.deploy,self.weights,self.caffe.TEST)
     self.mean=numpy.asarray((103.939, 116.779, 123.68))
     self.blob_names=['conv3_1','conv4_1','conv5_1']
     self.input_blob=self.net.inputs[0]
@@ -243,17 +243,6 @@ class lfw_attributes(object):
 
 @implements(AttributeClassifier)
 class celeba_attributes(object):
-  '''
-  >>> classifier=celeba_attributes()
-  >>> len(classifier.fields())
-  40
-  >>> classifier.fields()[0]
-  '5_o_Clock_Shadow'
-  >>> numpy.allclose(classifier.score(['000001.jpg'])[0],[-1,1,1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1,-1,-1,-1,-1,-1,1,1,-1,1,-1,-1,1,-1,-1,1,-1,-1,-1,1,1,-1,1,-1,1,-1,-1,1])
-  True
-  >>> classifier.select([(20,False)],classifier.score(['000001.jpg'])[0])[:2]
-  ['000001.jpg', '052501.jpg']
-  '''
   def __init__(self,**options):
     data=numpy.load('datasets/celeba/list_attr_celeba.npz')
     self._fields=tuple(data['fields'])
@@ -289,10 +278,8 @@ class facemodel_attributes(object):
   '5_o_Clock_Shadow'
   >>> classifier.lookup_scores(['images/facemodel/celeba/000009.jpg'])[0,:5]
   array([-2.41198874,  0.58286995,  0.94109076, -0.70556468, -2.84208179])
-  >>> numpy.allclose(classifier.score(['images/facemodel/celeba/000009.jpg'])[0,:5],[-2.39323288,  0.5700731 ,  0.917334  , -0.66668013, -2.66346439])
+  >>> numpy.allclose(classifier.score(['tests/000009.jpg'])[0,:5],[-2.39323288,  0.5700731 ,  0.917334  , -0.66668013, -2.66346439])
   True
-  >>> classifier.select([(20,False)],classifier.score(['000001.jpg'])[0])[:2]
-  ['000001.jpg', '052501.jpg']
   '''
   def __init__(self,**options):
     data=numpy.load('datasets/facemodel/attributes.npz')
