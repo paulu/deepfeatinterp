@@ -26,7 +26,7 @@ The Caffe and Torch deep learning software should be installed so that `import c
 Python packages:
 
 ```bash
-  pip install numpy scikit-image Pillow opencv-python scipy dlib lutorpy execnet torch torchvision
+  pip install numpy scikit-image Pillow opencv-python scipy dlib lutorpy execnet torch torchvision protobuf
 ```
 
 # 2 Demonstrations
