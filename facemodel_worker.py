@@ -7,10 +7,15 @@ from __future__ import print_function
 import execnet
 
 if __name__=='__channelexec__':
+  import os.path
+  import subprocess
+  if not os.path.exists('models/facemodel/model.t7'):
+    url='https://www.dropbox.com/s/18s63zomyfacjfs/facemodel.t7?dl=1'
+    subprocess.check_call(['wget',url,'-O','models/facemodel/model.t7'])
+
   import os
   os.chdir('models/facemodel')
   import numpy
-  import os.path
   import sys
   import StringIO
   import traceback
