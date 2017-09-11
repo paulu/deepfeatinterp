@@ -43,7 +43,7 @@ def warp_to_template(original,M,border_value=(0.5,0.5,0.5),image_dims=(400,400))
   return cv2.warpAffine(original.transpose(1,0,2),M[::-1],dsize=(image_dims[1],image_dims[0]),flags=cv2.INTER_LINEAR,borderMode=cv2.BORDER_CONSTANT,borderValue=border_value)
 
 def warp_from_template(original,M,border_value=(0.5,0.5,0.5),image_dims=(400,400)):
-  return cv2.warpAffine(original,M[::-1],dsize=image_dims,flags=(cv2.INTER_AREA | cv2.WARP_INVERSE_MAP),borderMode=cv2.BORDER_CONSTANT,borderValue=(0.0,0.0,0.0)).transpose(1,0,2)
+  return cv2.warpAffine(original,M[::-1],dsize=(image_dims[0],image_dims[1]),flags=(cv2.INTER_AREA | cv2.WARP_INVERSE_MAP),borderMode=cv2.BORDER_CONSTANT,borderValue=border_value).transpose(1,0,2)
 
 def argmin(S,F):
   return min(((i,F(i)) for i in S),key=lambda x: x[1])[0]
@@ -268,9 +268,13 @@ def load_face_detector(predictor_path='models/shape_predictor_68_face_landmarks.
   predictor=dlib.shape_predictor(predictor_path)
   return detector,predictor
 
-def detect_landmarks(ipath,detector,predictor,upsample=0):
-  original255=skimage.io.imread(ipath).astype(numpy.ubyte)
-  original=original255/255.0
+def detect_landmarks(ipath,detector,predictor,upsample=0,image=None):
+  if image is None:
+    original255=skimage.io.imread(ipath).astype(numpy.ubyte)
+    original=original255/255.0
+  else:
+    original=image
+    original255=(original.clip(0,1)*255).round().astype(numpy.ubyte)
   dets=detector(original255,upsample)
   if len(dets)!=1: raise FitError('{}: detected zero or more than one face.'.format(ipath))
 
