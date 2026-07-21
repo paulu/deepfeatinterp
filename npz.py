@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import numpy
+import collections.abc
 import collections
 import os.path
 
@@ -33,7 +34,7 @@ Note: del foo[key] will work, but saving an NpzLog with holes is not
 implemented.
 '''
 
-class NpzLog(collections.MutableMapping):
+class NpzLog(collections.abc.MutableMapping):
   def __init__(self,filename,dtype=numpy.float64,shape=None,buflen=0):
     if filename is None:
       self._k=[]
